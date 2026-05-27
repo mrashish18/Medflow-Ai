@@ -188,4 +188,14 @@ Render settings:
 
 ## Author
 
-Built by Ashish as a modern healthcare management portfolio project.
+Built by Ashish as a vibe-coded full-stack portfolio project exploring modern UI/UX, Flask development, deployment workflows, and AI-assisted product building.
+
+## License
+
+© 2026 Ashish Kumar — MedFlow AI
+
+This project is provided for educational and portfolio purposes only.
+
+Unauthorized commercial use, redistribution, or resale of this project or its source code is prohibited without explicit permission from the author.
+
+See the LICENSE file for more details.
