@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}Analytics · MedFlow AI{% endblock %}
+{% block content %}
+<div class="page-head"><div><span class="eyebrow">Insights</span><h1>Analytics</h1></div><button class="btn-secondary"><i class="bi bi-download"></i> Export</button></div>
+<div class="dashboard-grid">
+    <section class="panel wide"><h2>Patient Growth</h2><canvas id="growthChart"></canvas></section>
+    <section class="panel"><h2>Test Frequency</h2><canvas id="testChart"></canvas></section>
+    <section class="panel"><h2>Disease Trends</h2><canvas id="diseaseChart"></canvas></section>
+    <section class="panel"><h2>Lab Workload</h2><canvas id="workloadChart"></canvas></section>
+</div>
+{% endblock %}

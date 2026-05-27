@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block title %}{{ patient.name }} · MedFlow AI{% endblock %}
+{% block content %}
+<div class="page-head">
+    <div>
+        <span class="eyebrow">Patient profile</span>
+        <h1>{{ patient.name }}</h1>
+    </div>
+    <a class="btn-secondary" href="{{ url_for('patients') }}"><i class="bi bi-arrow-left"></i> Back</a>
+</div>
+
+<div class="patient-profile-grid">
+    <section class="panel profile-card">
+        <div class="patient-avatar">{{ patient.name[:1] }}</div>
+        <h2>{{ patient.patient_code }}</h2>
+        <p>{{ patient.symptoms }}</p>
+        <div class="profile-tags">
+            <span>{{ patient.gender }}</span>
+            <span>{{ patient.age }} years</span>
+            <span>{{ patient.blood_group }}</span>
+        </div>
+    </section>
+
+    <section class="panel detail-panel">
+        <h2>Contact & Care</h2>
+        <div class="detail-grid">
+            <div><span>Phone</span><strong>{{ patient.phone }}</strong></div>
+            <div><span>Assigned doctor</span><strong>{{ patient.doctor }}</strong></div>
+            <div><span>Address</span><strong>{{ patient.address }}</strong></div>
+            <div><span>Registered</span><strong>{{ patient.created_at }}</strong></div>
+        </div>
+    </section>
+</div>
+
+<div class="dashboard-grid">
+    <section class="panel">
+        <h2>Appointments</h2>
+        <div class="stack-list">
+            {% for item in appointments %}
+            <div><strong>{{ item.date }} at {{ item.time }}</strong><span>{{ item.doctor }} · {{ item.status }} · {{ item.notes }}</span></div>
+            {% else %}
+            <p>No appointments found.</p>
+            {% endfor %}
+        </div>
+    </section>
+    <section class="panel">
+        <h2>Lab Reports</h2>
+        <div class="stack-list">
+            {% for report in reports %}
+            <div><strong>{{ report.test_name }}</strong><span>{{ report.status }} · {{ report.result }}</span></div>
+            {% else %}
+            <p>No lab reports found.</p>
+            {% endfor %}
+        </div>
+    </section>
+</div>
+{% endblock %}

@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MedFlow AI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body class="landing-body">
+    <nav class="landing-nav">
+        <a class="brand" href="{{ url_for('landing') }}"><span class="brand-mark"><i class="bi bi-activity"></i></span> MedFlow AI</a>
+        <a class="btn-secondary" href="{{ url_for('login') }}">Login</a>
+    </nav>
+    <section class="hero premium-hero">
+        <div class="hero-copy">
+            <span class="eyebrow">Smart Patient & Lab Management</span>
+            <h1>MedFlow AI</h1>
+            <p>Premium healthcare operations software for hospitals, pathology labs, clinics, and care teams that need faster registration, cleaner reports, sharper analytics, and AI-ready clinical workflows.</p>
+            <div class="hero-actions">
+                <a class="btn-primary" href="{{ url_for('login') }}">Open Dashboard</a>
+                <a class="btn-secondary" href="#features">View Features</a>
+            </div>
+            <div class="hero-metrics">
+                <div><strong>6</strong><span>Core modules</span></div>
+                <div><strong>24/7</strong><span>Workflow view</span></div>
+                <div><strong>AI</strong><span>Ready panels</span></div>
+            </div>
+        </div>
+        <div class="hero-visual product-showcase" aria-label="Healthcare dashboard preview">
+            <div class="floating-card triage-card">
+                <i class="bi bi-heart-pulse"></i>
+                <div><strong>98%</strong><span>Report accuracy flow</span></div>
+            </div>
+            <div class="floating-card queue-card">
+                <i class="bi bi-clock-history"></i>
+                <div><strong>12 min</strong><span>Average intake</span></div>
+            </div>
+            <div class="device-frame dashboard-preview">
+                <div class="preview-sidebar">
+                    <div class="preview-logo"><i class="bi bi-activity"></i></div>
+                    <span></span><span></span><span></span><span></span>
+                </div>
+                <div class="preview-main">
+                    <div class="preview-top">
+                        <div>
+                            <strong>Care Command Center</strong>
+                            <span>Today · Live hospital workflow</span>
+                        </div>
+                        <small><i class="bi bi-bell"></i></small>
+                    </div>
+                    <div class="preview-stats">
+                        <article><i class="bi bi-people"></i><b>1,248</b><span>Patients</span></article>
+                        <article><i class="bi bi-calendar-check"></i><b>86</b><span>Bookings</span></article>
+                        <article><i class="bi bi-file-medical"></i><b>34</b><span>Reports</span></article>
+                    </div>
+                    <div class="preview-chart">
+                        <svg viewBox="0 0 420 150" aria-hidden="true">
+                            <path d="M10 112 C62 62, 99 92, 138 58 S220 104, 258 50 S341 80, 410 34"></path>
+                        </svg>
+                        <span style="height: 44%"></span><span style="height: 62%"></span><span style="height: 51%"></span><span style="height: 78%"></span><span style="height: 67%"></span><span style="height: 88%"></span>
+                    </div>
+                    <div class="preview-list">
+                        <div><span></span><b>Aarav Mehta · CBC review</b><small>Processing</small></div>
+                        <div><span></span><b>Priya Nair · ENT follow-up</b><small>Confirmed</small></div>
+                        <div><span></span><b>Meera Iyer · Thyroid report</b><small>Delivered</small></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="trust-strip">
+        <span><i class="bi bi-shield-check"></i> Secure login</span>
+        <span><i class="bi bi-database-check"></i> SQLite records</span>
+        <span><i class="bi bi-phone"></i> Mobile responsive</span>
+        <span><i class="bi bi-graph-up"></i> Live analytics</span>
+    </section>
+    <section class="landing-section" id="features">
+        <div class="section-heading">
+            <span class="eyebrow">Built for care teams</span>
+            <h2>Everything from intake to insights.</h2>
+        </div>
+        <div class="feature-grid">
+            <article><i class="bi bi-person-plus"></i><h3>Patient Registry</h3><p>Register, search, filter, and manage patient profiles.</p></article>
+            <article><i class="bi bi-calendar-check"></i><h3>Appointments</h3><p>Track doctor availability, statuses, and follow-ups.</p></article>
+            <article><i class="bi bi-clipboard2-pulse"></i><h3>Lab Reports</h3><p>Manage test workflow from sample collection to delivery.</p></article>
+            <article><i class="bi bi-robot"></i><h3>AI Modules</h3><p>Future-ready assistant panels for symptoms, reports, OCR, and voice.</p></article>
+        </div>
+    </section>
+    <section class="testimonial-band">
+        <blockquote>“A clinic-grade SaaS interface with the polish expected from a modern AI healthcare startup.”</blockquote>
+        <span>Designed for recruiters, healthcare demos, and internship portfolios.</span>
+    </section>
+    <footer class="landing-footer">MedFlow AI © {{ now.year }} · Secure healthcare workflow platform</footer>
+</body>
+</html>

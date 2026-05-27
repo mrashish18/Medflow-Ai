@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Lab Reports · MedFlow AI{% endblock %}
+{% block content %}
+<div class="page-head"><div><span class="eyebrow">Diagnostics</span><h1>Lab Report Management</h1></div><button class="btn-primary" data-modal="reportModal"><i class="bi bi-file-earmark-plus"></i> Add Test</button></div>
+<div class="report-grid">
+{% for report in reports %}
+    <article class="report-card">
+        <div><span class="badge {{ report.status|lower|replace(' ', '-') }}">{{ report.status }}</span><h2>{{ report.test_name }}</h2><p>{{ report.patient_name }} · {{ report.patient_code }}</p></div>
+        <p>{{ report.result }}</p>
+        <div class="progress"><span style="width: {% if report.status == 'Delivered' %}100{% elif report.status == 'Completed' %}78{% elif report.status == 'Processing' %}52{% else %}24{% endif %}%"></span></div>
+        <div class="card-actions"><button class="btn-secondary"><i class="bi bi-eye"></i> Preview</button><button class="btn-secondary"><i class="bi bi-download"></i> PDF</button></div>
+    </article>
+{% endfor %}
+</div>
+<div class="modal" id="reportModal"><form class="modal-card" method="post"><button type="button" class="icon-btn close-modal"><i class="bi bi-x"></i></button><h2>Add Lab Test</h2><div class="form-grid"><select name="patient_id">{% for patient in patients %}<option value="{{ patient.id }}">{{ patient.name }}</option>{% endfor %}</select><select name="test_name"><option>CBC</option><option>Blood Sugar</option><option>Urine Test</option><option>Pap Staining</option><option>Thyroid</option><option>Lipid Profile</option></select><select name="status"><option>Sample collected</option><option>Processing</option><option>Completed</option><option>Delivered</option></select><input name="result" placeholder="Result summary"></div><button class="btn-primary">Save Test</button></form></div>
+{% endblock %}

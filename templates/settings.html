@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}Settings · MedFlow AI{% endblock %}
+{% block content %}
+<div class="page-head"><div><span class="eyebrow">Control</span><h1>Settings</h1></div><a class="btn-secondary" href="{{ url_for('logout') }}"><i class="bi bi-box-arrow-right"></i> Logout</a></div>
+<div class="settings-grid">
+    <section class="panel"><h2>Profile</h2><input value="{{ current_user.name }}"><input value="{{ current_user.email }}"><select><option>{{ current_user.role }}</option><option>Doctor</option><option>Lab Technician</option><option>Receptionist</option></select><button class="btn-primary">Update Profile</button></section>
+    <section class="panel"><h2>Theme</h2><label class="toggle-row"><span>Dark mode</span><input type="checkbox" id="settingsTheme"></label><label class="toggle-row"><span>Soft cyan glow</span><input type="checkbox" checked></label></section>
+    <section class="panel"><h2>Notifications</h2><label class="toggle-row"><span>Lab status alerts</span><input type="checkbox" checked></label><label class="toggle-row"><span>Follow-up reminders</span><input type="checkbox" checked></label><label class="toggle-row"><span>Email reports</span><input type="checkbox"></label></section>
+    <section class="panel"><h2>Security</h2><p>Session management, password hashing, and role-based access structure are enabled for a secure starter architecture.</p></section>
+</div>
+{% endblock %}

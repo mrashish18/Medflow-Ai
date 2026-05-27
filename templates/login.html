@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Login · MedFlow AI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body class="login-body">
+    <section class="login-split">
+        <div class="login-art">
+            <a class="brand" href="{{ url_for('landing') }}"><span class="brand-mark"><i class="bi bi-activity"></i></span> MedFlow AI</a>
+            <div class="health-illustration">
+                <i class="bi bi-heart-pulse"></i>
+                <span class="wave"></span>
+            </div>
+            <h1>Healthcare workflow, beautifully organized.</h1>
+            <p>Register patients, monitor lab reports, manage appointments, and prepare AI-powered summaries from one calm dashboard.</p>
+        </div>
+        <form class="login-card" method="post">
+            <span class="eyebrow">Welcome back</span>
+            <h2>Sign in to MedFlow</h2>
+            {% if error %}<p class="form-error">{{ error }}</p>{% endif %}
+            <label>Email</label>
+            <input name="email" type="email" value="admin@medflow.ai" required>
+            <label>Password</label>
+            <input name="password" type="password" value="medflow123" required>
+            <div class="form-row">
+                <label class="check"><input type="checkbox" checked> Remember me</label>
+                <a href="#">Forgot password?</a>
+            </div>
+            <button class="btn-primary" type="submit">Login <i class="bi bi-arrow-right"></i></button>
+            <p class="demo-note">Demo: admin@medflow.ai · medflow123</p>
+        </form>
+    </section>
+</body>
+</html>

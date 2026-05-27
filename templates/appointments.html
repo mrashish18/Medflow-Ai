@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+{% block title %}Appointments · MedFlow AI{% endblock %}
+{% block content %}
+<div class="page-head"><div><span class="eyebrow">Calendar</span><h1>Appointment System</h1></div><button class="btn-primary" data-modal="appointmentModal"><i class="bi bi-calendar-plus"></i> Book</button></div>
+<section class="appointment-hero panel">
+    <div>
+        <span class="eyebrow">Today overview</span>
+        <h2>Care team schedule</h2>
+        <p>Track bookings, follow-ups, doctor availability, and patient flow from one polished calendar workspace.</p>
+    </div>
+    <div class="appointment-summary">
+        {% for label, count in status_counts.items() %}
+        <span class="{{ label|lower }}">{{ count }} {{ label }}</span>
+        {% endfor %}
+    </div>
+</section>
+
+<section class="calendar-board appointment-calendar">
+    {% for day, items in calendar_items.items() %}
+    <div class="day-column">
+        <div class="day-head">
+            <div>
+                <h3>{{ day }}</h3>
+                <small>{{ loop.index + 9 }} Jun</small>
+            </div>
+            <span>{{ items|length }} visits</span>
+        </div>
+        {% for item in items %}
+        <article class="appointment-pill {{ item.status|lower }}">
+            <div class="pill-time">{{ item.time }}</div>
+            <div>
+                <strong>{{ item.patient_name }}</strong>
+                <span>{{ item.doctor }}</span>
+            </div>
+            <small>{{ item.status }}</small>
+        </article>
+        {% else %}
+        <div class="empty-slot">
+            <i class="bi bi-calendar2-plus"></i>
+            <span>Open slot</span>
+            <button type="button" data-modal="appointmentModal">Book now</button>
+        </div>
+        {% endfor %}
+    </div>
+    {% endfor %}
+</section>
+
+<section class="doctor-strip">
+    {% for doctor in doctors %}
+    <article>
+        <span>{{ doctor.split(' ')[1][:1] if doctor.split(' ')|length > 1 else 'D' }}</span>
+        <div><strong>{{ doctor }}</strong><small>Available today</small></div>
+        <i class="bi bi-check-circle"></i>
+    </article>
+    {% endfor %}
+</section>
+<section class="panel">
+    <div class="table-wrap"><table><thead><tr><th>Patient</th><th>Doctor</th><th>Date</th><th>Time</th><th>Status</th><th>Notes</th></tr></thead><tbody>
+    {% for item in appointments %}
+    <tr><td><strong>{{ item.patient_name }}</strong><small>{{ item.patient_code }}</small></td><td>{{ item.doctor }}</td><td>{{ item.date }}</td><td>{{ item.time }}</td><td><span class="badge {{ item.status|lower }}">{{ item.status }}</span></td><td>{{ item.notes }}</td></tr>
+    {% endfor %}
+    </tbody></table></div>
+</section>
+<div class="modal" id="appointmentModal">
+    <form class="modal-card appointment-modal-card" method="post">
+        <button type="button" class="icon-btn close-modal"><i class="bi bi-x"></i></button>
+        <div class="modal-hero">
+            <span><i class="bi bi-calendar2-plus"></i></span>
+            <div>
+                <span class="eyebrow">Care scheduling</span>
+                <h2>Book Appointment</h2>
+                <p>Select a patient, assign a doctor, and reserve the visit slot.</p>
+            </div>
+        </div>
+        <div class="form-grid beautiful-form">
+            <label>
+                <span>Patient name</span>
+                <div class="input-icon">
+                    <i class="bi bi-person-heart"></i>
+                    <input name="patient_name" list="patientNames" placeholder="Type patient name" required>
+                    <datalist id="patientNames">
+                        {% for patient in patients %}
+                        <option value="{{ patient.name }}"></option>
+                        {% endfor %}
+                    </datalist>
+                </div>
+            </label>
+            <label>
+                <span>Doctor to visit</span>
+                <div class="input-icon">
+                    <i class="bi bi-person-vcard"></i>
+                    <select name="doctor" required>
+                        {% for doctor in doctors %}
+                        <option value="{{ doctor }}">{{ doctor }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </label>
+            <label><span>Date</span><div class="input-icon"><i class="bi bi-calendar-event"></i><input name="date" type="date" required></div></label>
+            <label><span>Time</span><div class="input-icon"><i class="bi bi-clock"></i><input name="time" type="time" required></div></label>
+            <label><span>Status</span><div class="input-icon"><i class="bi bi-check2-square"></i><select name="status"><option>Pending</option><option>Confirmed</option><option>Completed</option><option>Cancelled</option></select></div></label>
+            <label><span>Notes</span><div class="input-icon"><i class="bi bi-journal-medical"></i><input name="notes" placeholder="Follow-up, first visit, urgent review"></div></label>
+        </div>
+        <div class="modal-actions">
+            <button type="button" class="btn-secondary close-modal">Cancel</button>
+            <button class="btn-primary"><i class="bi bi-calendar-check"></i> Book Appointment</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

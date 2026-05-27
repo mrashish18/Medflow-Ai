@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block title %}AI Tools · MedFlow AI{% endblock %}
+{% block content %}
+<div class="page-head">
+    <div>
+        <span class="eyebrow">AI workflow</span>
+        <h1>AI Ready Modules</h1>
+    </div>
+    <a class="btn-secondary" href="{{ url_for('dashboard') }}"><i class="bi bi-arrow-left"></i> Dashboard</a>
+</div>
+
+<section class="ai-workbench panel">
+    <div>
+        <span class="eyebrow">Smart assistant</span>
+        <h2>Healthcare operations co-pilot</h2>
+        <p>These modules are prepared as future AI features for faster intake, report explanation, voice-based entry, OCR scanning, and workflow help.</p>
+    </div>
+    <div class="ai-orb"><i class="bi bi-stars"></i></div>
+</section>
+
+<div class="ai-tool-grid">
+    <article class="ai-tool-card">
+        <i class="bi bi-clipboard2-pulse"></i>
+        <h2>AI Symptom Assistant</h2>
+        <p>Enter symptoms and receive possible care-routing suggestions for doctor review.</p>
+        <textarea placeholder="Example: fever, fatigue, throat pain"></textarea>
+        <button class="btn-primary" type="button">Analyze Symptoms</button>
+    </article>
+    <article class="ai-tool-card">
+        <i class="bi bi-file-earmark-medical"></i>
+        <h2>Smart Report Summary</h2>
+        <p>Convert complex lab values into simple patient-friendly explanations.</p>
+        <textarea placeholder="Paste report result summary"></textarea>
+        <button class="btn-primary" type="button">Summarize Report</button>
+    </article>
+    <article class="ai-tool-card">
+        <i class="bi bi-mic"></i>
+        <h2>Voice Input</h2>
+        <p>Capture patient entry notes through speech-to-text workflows.</p>
+        <div class="ai-placeholder"><span></span><span></span><span></span></div>
+        <button class="btn-secondary" type="button"><i class="bi bi-record-circle"></i> Start Voice</button>
+    </article>
+    <article class="ai-tool-card">
+        <i class="bi bi-camera"></i>
+        <h2>OCR Scanner</h2>
+        <p>Read uploaded lab-report images and extract patient/report details.</p>
+        <div class="upload-zone"><i class="bi bi-cloud-arrow-up"></i><span>Upload report image</span></div>
+        <button class="btn-secondary" type="button">Scan Document</button>
+    </article>
+    <article class="ai-tool-card wide-ai">
+        <i class="bi bi-chat-dots"></i>
+        <h2>AI Chatbot</h2>
+        <p>Ask workflow questions, find patients faster, and prepare action checklists for hospital teams.</p>
+        <div class="chat-preview">
+            <span>Show pending lab reports for today.</span>
+            <strong>Found 4 pending reports. CBC and Thyroid need doctor approval.</strong>
+        </div>
+    </article>
+</div>
+{% endblock %}
