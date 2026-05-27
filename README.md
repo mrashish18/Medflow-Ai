@@ -4,6 +4,10 @@ MedFlow AI is a modern healthcare SaaS web application for hospitals, clinics, p
 
 The project is designed as a professional portfolio app for internship interviews, recruiter review, LinkedIn demos, and healthcare software presentations.
 
+## Live Demo
+
+[Open MedFlow AI on Render](https://medflow-ai-96cv.onrender.com)
+
 ## Demo Login
 
 - Email: `admin@medflow.ai`
