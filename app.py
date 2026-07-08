@@ -1,13 +1,36 @@
 from datetime import datetime, timedelta
+from functools import wraps
 import os
 import sqlite3
 
-from flask import Flask, g, redirect, render_template, request, session, url_for
+from flask import Flask, abort, g, redirect, render_template, request, session, url_for
 from werkzeug.security import check_password_hash, generate_password_hash
 
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DB_PATH = os.path.join(BASE_DIR, "medflow.db")
+
+ROLE_SUPER_ADMIN = "super_admin"
+ROLE_DOCTOR = "doctor"
+ROLE_LAB_TECH = "lab_tech"
+ROLE_RECEPTIONIST = "receptionist"
+ROLE_PATIENT = "patient"
+
+ROLE_LABELS = {
+    ROLE_SUPER_ADMIN: "Super Admin",
+    ROLE_DOCTOR: "Doctor",
+    ROLE_LAB_TECH: "Laboratory Technician",
+    ROLE_RECEPTIONIST: "Receptionist",
+    ROLE_PATIENT: "Patient",
+}
+
+ROLE_HOME = {
+    ROLE_SUPER_ADMIN: "dashboard",
+    ROLE_DOCTOR: "dashboard",
+    ROLE_LAB_TECH: "dashboard",
+    ROLE_RECEPTIONIST: "dashboard",
+    ROLE_PATIENT: "dashboard",
+}
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY", "dev-medflow-secret")
@@ -82,7 +105,9 @@ def init_db():
             name TEXT NOT NULL,
             email TEXT NOT NULL UNIQUE,
             password_hash TEXT NOT NULL,
-            role TEXT NOT NULL
+            role TEXT NOT NULL,
+            doctor_name TEXT,
+            patient_id INTEGER
         );
 
         CREATE TABLE IF NOT EXISTS patients (
@@ -118,12 +143,36 @@ def init_db():
             status TEXT NOT NULL,
             uploaded_file TEXT,
             created_at TEXT NOT NULL,
+            assigned_to_user_id INTEGER,
+            doctor TEXT,
             FOREIGN KEY(patient_id) REFERENCES patients(id)
         );
         """
     )
     db.commit()
+    migrate_schema()
     seed_db()
+
+
+def migrate_schema():
+    db = get_db()
+    user_cols = {row[1] for row in db.execute("PRAGMA table_info(users)").fetchall()}
+    if "doctor_name" not in user_cols:
+        db.execute("ALTER TABLE users ADD COLUMN doctor_name TEXT")
+    if "patient_id" not in user_cols:
+        db.execute("ALTER TABLE users ADD COLUMN patient_id INTEGER")
+
+    lab_cols = {row[1] for row in db.execute("PRAGMA table_info(lab_reports)").fetchall()}
+    if "assigned_to_user_id" not in lab_cols:
+        db.execute("ALTER TABLE lab_reports ADD COLUMN assigned_to_user_id INTEGER")
+    if "doctor" not in lab_cols:
+        db.execute("ALTER TABLE lab_reports ADD COLUMN doctor TEXT")
+
+    db.execute(
+        "UPDATE users SET role = ? WHERE role IN ('Admin', 'admin')",
+        (ROLE_SUPER_ADMIN,),
+    )
+    db.commit()
 
 
 def seed_db():
@@ -134,7 +183,7 @@ def seed_db():
 
     db.execute(
         "INSERT INTO users (name, email, password_hash, role) VALUES (?, ?, ?, ?)",
-        ("Dr. Ashish Sharma", "admin@medflow.ai", generate_password_hash("medflow123"), "Admin"),
+        ("Dr. Ashish Sharma", "admin@medflow.ai", generate_password_hash("medflow123"), ROLE_SUPER_ADMIN),
     )
 
     patients = [
@@ -170,16 +219,20 @@ def seed_db():
         )
 
     reports = [
-        (1, "CBC", "WBC mildly elevated", "Processing"),
-        (2, "Urine Test", "Awaiting microscopy", "Sample collected"),
-        (3, "Blood Sugar", "Fasting: 142 mg/dL", "Completed"),
-        (4, "Thyroid", "TSH under review", "Delivered"),
-        (6, "Lipid Profile", "LDL borderline high", "Completed"),
+        (1, "CBC", "WBC mildly elevated", "Processing", "Dr. Nisha Rao"),
+        (2, "Urine Test", "Awaiting microscopy", "Sample collected", "Dr. Kabir Sethi"),
+        (3, "Blood Sugar", "Fasting: 142 mg/dL", "Completed", "Dr. Nisha Rao"),
+        (4, "Thyroid", "TSH under review", "Delivered", "Dr. Sana Khan"),
+        (6, "Lipid Profile", "LDL borderline high", "Completed", "Dr. Sana Khan"),
     ]
-    for patient_id, test_name, result, status in reports:
+    for patient_id, test_name, result, status, doctor in reports:
         db.execute(
-            "INSERT INTO lab_reports (patient_id, test_name, result, status, created_at) VALUES (?, ?, ?, ?, ?)",
-            (patient_id, test_name, result, status, today.strftime("%Y-%m-%d")),
+            """
+            INSERT INTO lab_reports
+            (patient_id, test_name, result, status, created_at, doctor)
+            VALUES (?, ?, ?, ?, ?, ?)
+            """,
+            (patient_id, test_name, result, status, today.strftime("%Y-%m-%d"), doctor),
         )
     db.commit()
 
