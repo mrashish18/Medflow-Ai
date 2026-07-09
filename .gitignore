@@ -1,8 +1,5 @@
-.vs/
+.env
 __pycache__/
-*.py[cod]
-.venv/
-venv/
+*.pyc
+medicore.db
 instance/
-*.log
-medflow.db
