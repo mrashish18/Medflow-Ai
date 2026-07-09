@@ -1,205 +1,361 @@
-# MediCore
+# 🏥 MediCore
 
-AI-Powered Hospital Management System
+![Python](https://img.shields.io/badge/Python-3.11-blue?style=for-the-badge)
+![Flask](https://img.shields.io/badge/Flask-Web%20Framework-black?style=for-the-badge)
+![SQLite](https://img.shields.io/badge/Database-SQLite-003B57?style=for-the-badge)
+![Render](https://img.shields.io/badge/Hosted%20on-Render-6C47FF?style=for-the-badge)
+![License](https://img.shields.io/badge/License-Custom-green?style=for-the-badge)
 
-MediCore is a modern healthcare SaaS web application for hospitals, clinics, pathology labs, and healthcare centers. It helps staff register patients, manage appointments, track lab reports, view analytics, and explore future-ready AI workflow modules.
+## AI-Powered Hospital Management System
 
-The project is designed as a professional portfolio app for internship interviews, recruiter review, LinkedIn demos, and healthcare software presentations.
+MediCore is a modern full-stack Hospital Management System developed using **Flask**, **SQLite**, **HTML**, **CSS**, **JavaScript**, and **Tailwind CSS**.
 
-## 🚀 Live Demo
+The application enables hospitals, clinics, pathology laboratories, and healthcare centers to efficiently manage patients, appointments, laboratory reports, healthcare analytics, and AI-assisted workflows through a clean and responsive interface.
 
-👉 https://medicore-vjys.onrender.com
+This project was built as a professional portfolio application for internships, recruiter evaluations, software demonstrations, and healthcare technology showcases.
 
-## Demo Login
+---
 
-- Email: `admin@medicore.ai`
-- Password: `medicore123`
+# 🚀 Live Demo
 
-## Features
+### 🌐 https://medicore-vjys.onrender.com
 
-- Secure login with hashed passwords and Flask sessions
-- Responsive dashboard with animated counters and Chart.js analytics
-- Patient management with search, filters, modal forms, and patient detail pages
-- Appointment booking with manual patient entry and doctor dropdown selection
-- Weekly appointment calendar with status cards and doctor availability
-- Lab report management with report cards, statuses, and progress indicators
-- Analytics page with patient growth, test frequency, disease trends, and workload charts
-- Settings page with profile, notification, security, and theme controls
-- AI-ready tools page for symptom assistant, report summary, voice input, OCR scanner, and chatbot workflow
-- Dark mode and mobile-responsive sidebar navigation
+---
 
-## Tech Stack
+# 🔐 Demo Login
 
-Frontend:
+### Administrator
 
-- HTML
-- CSS
+**Email**
+
+```
+admin@medicore.ai
+```
+
+**Password**
+
+```
+medicore123
+```
+
+---
+
+# ✨ Features
+
+✅ Secure Authentication using Flask Sessions
+
+✅ Password Hashing using Werkzeug
+
+✅ Patient Registration & Management
+
+✅ Appointment Scheduling System
+
+✅ Laboratory Report Management
+
+✅ Healthcare Analytics Dashboard
+
+✅ Interactive Charts using Chart.js
+
+✅ AI Module Interface
+
+✅ Settings & User Preferences
+
+✅ Responsive UI for Desktop & Mobile
+
+✅ Dark Mode Support
+
+✅ Render Cloud Deployment
+
+---
+
+# 🏗 Architecture
+
+```
+Frontend
+(HTML + CSS + JavaScript + Tailwind)
+
+                │
+
+                ▼
+
+Flask Backend
+
+                │
+
+                ▼
+
+SQLite Database
+
+                │
+
+                ▼
+
+Render Cloud Deployment
+```
+
+---
+
+# 💻 Tech Stack
+
+## Frontend
+
+- HTML5
+- CSS3
 - JavaScript
-- Tailwind CSS CDN
+- Tailwind CSS
 - Bootstrap Icons
 - Chart.js
 
-Backend:
+## Backend
 
 - Python
 - Flask
 - SQLite
-- Werkzeug password hashing
-- Gunicorn for production
+- Werkzeug Authentication
+- Gunicorn
 
-## App Pages
+---
 
-- Landing page
-- Login page
+# 📂 Modules
+
+- Landing Page
+- Login System
 - Dashboard
-- Patient management
-- Patient details
-- Appointment system
-- Lab reports
-- Analytics
-- AI tools
+- Patient Management
+- Patient Details
+- Appointment Management
+- Laboratory Reports
+- Analytics Dashboard
+- AI Assistant
 - Settings
 
-## Project Structure
+---
+
+# 📁 Project Structure
 
 ```text
-MEDICORE BY ASHISH/
-|-- app.py
-|-- requirements.txt
-|-- Procfile
-|-- runtime.txt
-|-- render.yaml
-|-- static/
-|   |-- css/
-|   |   `-- styles.css
-|   `-- js/
-|       `-- app.js
-`-- templates/
-    |-- base.html
-    |-- landing.html
-    |-- login.html
-    |-- dashboard.html
-    |-- patients.html
-    |-- patient_detail.html
-    |-- appointments.html
-    |-- lab_reports.html
-    |-- analytics.html
-    |-- ai_tools.html
-    `-- settings.html
+MediCore/
+│
+├── app.py
+├── requirements.txt
+├── runtime.txt
+├── Procfile
+├── render.yaml
+├── README.md
+├── LICENSE
+│
+├── static/
+│   ├── css/
+│   ├── js/
+│   └── screenshots/
+│
+└── templates/
+    ├── base.html
+    ├── landing.html
+    ├── login.html
+    ├── dashboard.html
+    ├── patients.html
+    ├── patient_detail.html
+    ├── appointments.html
+    ├── lab_reports.html
+    ├── analytics.html
+    ├── ai_tools.html
+    └── settings.html
 ```
 
-## Run Locally
+---
 
-Create a virtual environment:
+# ⚙️ Installation
 
-```powershell
+## Clone Repository
+
+```bash
+git clone https://github.com/mrashish18/MediCore.git
+```
+
+Move into the project
+
+```bash
+cd MediCore
+```
+
+Create Virtual Environment
+
+```bash
 python -m venv .venv
 ```
 
-Activate it:
+Activate Environment
 
-```powershell
-.\.venv\Scripts\Activate.ps1
+### Windows
+
+```bash
+.venv\Scripts\activate
 ```
 
-Install dependencies:
+### Linux / macOS
 
-```powershell
+```bash
+source .venv/bin/activate
+```
+
+Install Dependencies
+
+```bash
 pip install -r requirements.txt
 ```
 
-Start the app:
+Run the Application
 
-```powershell
+```bash
 python app.py
 ```
 
-Open:
+Open
 
-```text
+```
 http://127.0.0.1:5000
 ```
 
-The SQLite database is created automatically on first run with sample healthcare data.
+---
 
-## Screenshots
+# 📸 Screenshots
 
-### Homepage
+## 🏠 Homepage
 
-![Homepage start](static/screenshoot/01_HOMEPAGE_START_01.png)
+### Landing Page
 
-![Homepage end](static/screenshoot/02_HOMEPAGE_END_02.png)
+![Homepage Start](static/screenshots/01_HOMEPAGE_START_01.png)
 
-### Authentication
+![Homepage Middle](static/screenshots/02_HOMEPAGE_MIDDLE_02.png)
 
-![Sign in page](static/screenshoot/03_SIGN%20IN%20OR%20SIGN%20UP%20PAGE.png)
+![Homepage End](static/screenshots/03_HOMEPAGE_END_03.png)
 
-### Dashboard
+---
 
-![Hospital dashboard](static/screenshoot/04_HOSPITAL%20DASHBOARD.png)
+## 🔐 Authentication
 
-### Patient Management
+![Sign In](static/screenshots/04_SIGN%20IN%20OR%20SIGN%20UP%20PAGE.png)
 
-![Patient management](static/screenshoot/05_PATIENT%20MANAGEMENT.png)
+---
 
-![Add patient modal](static/screenshoot/06_ADD%20PATIENT.png)
+## 📊 Dashboard
 
-### Appointment System
+![Dashboard](static/screenshots/05_HOSPITAL%20DASHBOARD.png)
 
-![Appointment system](static/screenshoot/07_APPOINTMENT%20SYSTEM.png)
+---
 
-![Book appointment modal](static/screenshoot/08_BOOK%20APPOINTMENT.png)
+## 👨‍⚕️ Patient Management
 
-### Lab Reports
+![Patient Management](static/screenshots/06_PATIENT%20MANAGEMENT.png)
 
-![Lab report management](static/screenshoot/09_LAB%20REPORT%20MANAGEMENT.png)
+![Add Patient](static/screenshots/07_ADD%20PATIENT.png)
 
-![Add lab test modal](static/screenshoot/10_ADD%20LAB%20TEST.png)
+---
 
-### Analytics
+## 📅 Appointment System
 
-![Analytics page](static/screenshoot/11_ANALYTICS.png)
+![Appointment System](static/screenshots/08_APPOINTMENT%20SYSTEM.png)
 
-### AI Module
+![Book Appointment](static/screenshots/09_BOOK%20APPOINTMENT.png)
 
-![AI module](static/screenshoot/12_AI%20MODULE.png)
+---
 
-## Deploy on Render
+## 🧪 Laboratory Reports
 
-This repository includes Render deployment files:
+![Lab Reports](static/screenshots/10_LAB%20REPORT%20MANAGEMENT.png)
 
-- `Procfile`
-- `runtime.txt`
-- `render.yaml`
+![Add Lab Test](static/screenshots/11_ADD%20LAB%20TEST.png)
 
-Render settings:
+---
 
-- Build command: `pip install -r requirements.txt`
-- Start command: `gunicorn app:app`
-- Environment variable: `SECRET_KEY`
+## 📈 Analytics
 
-## Future Improvements
+![Analytics](static/screenshots/12_ANALYTICS.png)
 
-- PDF lab report generation
-- Email report delivery
-- QR code patient ID
-- Role-based dashboards for Admin, Doctor, Lab Technician, Receptionist, and Patient
-- Real OpenAI-powered symptom assistant and report summary
-- Calendar drag-and-drop scheduling
-- REST API endpoints for mobile apps
+---
 
-## Author
+## 🤖 AI Module
 
-Built by Ashish as a vibe-coded full-stack portfolio project exploring modern UI/UX, Flask development, deployment workflows, and AI-assisted product building.
+![AI Module](static/screenshots/13_AI%20MODULE.png)
 
-## License
+---
 
-© 2026 MediCore
+# 🚀 Deployment
 
-Built by Ashish using AI-assisted Vibe Coding.
+The project is deployed on **Render**.
 
-This project is provided for educational and portfolio purposes only.
+### Build Command
 
-Unauthorized commercial use, redistribution, or resale of this project or its source code is prohibited without explicit permission from the author.
+```bash
+pip install -r requirements.txt
+```
 
-See the LICENSE file for more details.
+### Start Command
+
+```bash
+gunicorn app:app
+```
+
+Environment Variables
+
+```
+SECRET_KEY
+```
+
+---
+
+# 📌 Resume Highlights
+
+- Developed a full-stack Hospital Management System using Flask and SQLite.
+- Designed secure authentication with password hashing and Flask sessions.
+- Built patient management, appointment scheduling, laboratory reports, analytics, and AI workflow modules.
+- Created responsive dashboards using Tailwind CSS and Chart.js.
+- Deployed the application on Render with production-ready configuration.
+- Managed project development using Git and GitHub.
+
+---
+
+# 🔮 Future Improvements
+
+- Role-Based Access Control (Admin, Doctor, Patient, Lab Technician, Receptionist)
+- AI Symptom Checker
+- AI Medical Report Summarizer
+- QR Code Patient ID
+- PDF Report Generation
+- Email Notifications
+- REST API
+- Mobile Application
+- OCR Prescription Scanner
+- Voice Assistant
+- Drug Interaction Checker
+
+---
+
+# 👨‍💻 Author
+
+## Ashish Kumar
+
+**BS in Data Science and Applications**
+
+**Indian Institute of Technology Madras**
+
+GitHub
+
+https://github.com/mrashish18
+
+---
+
+# 📄 License
+
+© 2026 Ashish Kumar
+
+This project is intended for educational, learning, portfolio, and demonstration purposes.
+
+Commercial redistribution, resale, or reproduction without permission is prohibited.
+
+See the **LICENSE** file for complete licensing information.
+
+---
+
+⭐ If you found this project useful, consider giving it a Star on GitHub.
