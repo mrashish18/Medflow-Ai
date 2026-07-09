@@ -6,9 +6,9 @@ MediCore is a modern healthcare SaaS web application for hospitals, clinics, pat
 
 The project is designed as a professional portfolio app for internship interviews, recruiter review, LinkedIn demos, and healthcare software presentations.
 
-## Live Demo
+## 🚀 Live Demo
 
-[Open MediCore on Render](https://medflow-ai-96cv.onrender.com)
+👉 https://medicore-vjys.onrender.com
 
 ## Demo Login
 
