@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Forbidden - MediCore{% endblock %}
+{% block content %}
+<div class="page-head">
+    <div>
+        <span class="eyebrow">Access control</span>
+        <h1>403 Forbidden</h1>
+    </div>
+    <a class="btn-secondary" href="{{ url_for('dashboard') }}"><i class="bi bi-arrow-left"></i> Return to MediCore Dashboard</a>
+</div>
+<section class="panel">
+    <h2>Unauthorized area</h2>
+    <p>Your current role is not permitted to access this page or record.</p>
+</section>
+{% endblock %}

@@ -1,12 +1,15 @@
 {% extends "base.html" %}
-{% block title %}Dashboard · MedFlow AI{% endblock %}
+{% block title %}Dashboard - MediCore{% endblock %}
 {% block content %}
 <div class="page-head">
     <div>
         <span class="eyebrow">Command center</span>
-        <h1>Hospital Dashboard</h1>
+        <h1>Welcome back to MediCore</h1>
+        <p class="demo-note">Manage patients, appointments, laboratories, and healthcare workflows efficiently.</p>
     </div>
+    {% if current_user.role in ['super_admin', 'receptionist'] %}
     <a class="btn-primary" href="{{ url_for('patients') }}"><i class="bi bi-plus-lg"></i> Add Patient</a>
+    {% endif %}
 </div>
 <div class="stat-grid">
     <a class="stat-card" href="{{ url_for('patients') }}" aria-label="Open patient management">
@@ -25,8 +28,8 @@
 <div class="dashboard-grid">
     <section class="panel wide"><h2>Daily Patient Flow</h2><canvas id="patientChart"></canvas></section>
     <section class="panel"><h2>Appointments</h2><canvas id="appointmentChart"></canvas></section>
-    <section class="panel"><h2>Recent Patients</h2><div class="stack-list">{% for patient in recent_patients %}<div><strong>{{ patient.name }}</strong><span>{{ patient.patient_code }} · {{ patient.doctor }}</span></div>{% endfor %}</div></section>
-    <section class="panel"><h2>Upcoming</h2><div class="stack-list">{% for item in upcoming %}<div><strong>{{ item.patient_name }}</strong><span>{{ item.date }} at {{ item.time }} · {{ item.status }}</span></div>{% endfor %}</div></section>
+    <section class="panel"><h2>Recent Patients</h2><div class="stack-list">{% for patient in recent_patients %}<div><strong>{{ patient.name }}</strong><span>{{ patient.patient_code }} - {{ patient.doctor }}</span></div>{% endfor %}</div></section>
+    <section class="panel"><h2>Upcoming</h2><div class="stack-list">{% for item in upcoming %}<div><strong>{{ item.patient_name }}</strong><span>{{ item.date }} at {{ item.time }} - {{ item.status }}</span></div>{% endfor %}</div></section>
     <section class="panel alert-panel"><h2>Emergency Alerts</h2><p><i class="bi bi-exclamation-triangle"></i> 2 urgent lab reviews require doctor approval.</p><p><i class="bi bi-bell"></i> ICU bed update expected in 30 minutes.</p></section>
     <section class="panel ai-modules"><h2>AI Modules</h2><div><span>Symptom Assistant</span><span>Report Summary</span><span>Voice Input</span><span>OCR Scanner</span></div></section>
 </div>

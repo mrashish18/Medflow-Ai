@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}{{ patient.name }} · MedFlow AI{% endblock %}
+{% block title %}{{ patient.name }} - MediCore{% endblock %}
 {% block content %}
 <div class="page-head">
     <div>
@@ -53,5 +53,27 @@
             {% endfor %}
         </div>
     </section>
+    {% if current_user.role not in ['receptionist', 'lab_tech'] %}
+    <section class="panel">
+        <h2>Prescriptions</h2>
+        <div class="stack-list">
+            {% for item in prescriptions %}
+            <div><strong>{{ item.medication }}</strong><span>{{ item.diagnosis }} Â· {{ item.notes }}</span></div>
+            {% else %}
+            <p>No prescriptions found.</p>
+            {% endfor %}
+        </div>
+    </section>
+    <section class="panel">
+        <h2>Medical History</h2>
+        <div class="stack-list">
+            {% for item in history %}
+            <div><strong>{{ item.created_at }}</strong><span>{{ item.summary }}</span></div>
+            {% else %}
+            <p>No medical history found.</p>
+            {% endfor %}
+        </div>
+    </section>
+    {% endif %}
 </div>
 {% endblock %}

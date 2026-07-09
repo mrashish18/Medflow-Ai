@@ -1,7 +1,7 @@
 {% extends "base.html" %}
-{% block title %}Patients · MedFlow AI{% endblock %}
+{% block title %}Patients - MediCore{% endblock %}
 {% block content %}
-<div class="page-head"><div><span class="eyebrow">Registry</span><h1>Patient Management</h1></div><button class="btn-primary" data-modal="patientModal"><i class="bi bi-person-plus"></i> New Patient</button></div>
+<div class="page-head"><div><span class="eyebrow">Registry</span><h1>Patient Management</h1></div>{% if current_user.role in ['super_admin', 'receptionist'] %}<button class="btn-primary" data-modal="patientModal"><i class="bi bi-person-plus"></i> New Patient</button>{% endif %}</div>
 <form class="filters" method="get">
     <input name="q" value="{{ search }}" placeholder="Search by name, ID or phone">
     <select name="gender"><option value="">All genders</option><option {% if gender=='Male' %}selected{% endif %}>Male</option><option {% if gender=='Female' %}selected{% endif %}>Female</option></select>
@@ -19,7 +19,9 @@
                     <td>{{ patient.age }}</td><td>{{ patient.gender }}</td><td>{{ patient.blood_group }}</td><td>{{ patient.phone }}</td><td>{{ patient.doctor }}</td>
                     <td class="row-actions">
                         <a class="icon-btn" href="{{ url_for('patient_detail', patient_id=patient.id) }}" aria-label="View details"><i class="bi bi-eye"></i></a>
+                        {% if current_user.role == 'super_admin' %}
                         <form method="post" action="{{ url_for('delete_patient', patient_id=patient.id) }}"><button class="icon-btn danger" aria-label="Delete"><i class="bi bi-trash"></i></button></form>
+                        {% endif %}
                     </td>
                 </tr>
             {% endfor %}
@@ -44,7 +46,7 @@
             <label><span>Gender</span><div class="input-icon"><i class="bi bi-gender-ambiguous"></i><select name="gender" required><option>Male</option><option>Female</option><option>Other</option></select></div></label>
             <label><span>Blood group</span><div class="input-icon"><i class="bi bi-droplet"></i><input name="blood_group" placeholder="B+"></div></label>
             <label><span>Phone number</span><div class="input-icon"><i class="bi bi-telephone"></i><input name="phone" placeholder="9876543210"></div></label>
-            <label><span>Assigned doctor</span><div class="input-icon"><i class="bi bi-person-vcard"></i><input name="doctor" placeholder="Dr. Nisha Rao"></div></label>
+            <label><span>Assigned doctor</span><div class="input-icon"><i class="bi bi-person-vcard"></i><select name="assigned_doctor_id">{% for doctor in doctors %}<option value="{{ doctor.id }}">{{ doctor.name }}</option>{% endfor %}</select></div></label>
             <label><span>Address</span><div class="input-icon"><i class="bi bi-geo-alt"></i><input name="address" placeholder="Sector 14, Gurugram"></div></label>
             <label><span>Symptoms</span><div class="input-icon"><i class="bi bi-clipboard2-pulse"></i><input name="symptoms" placeholder="Fever, fatigue"></div></label>
         </div>

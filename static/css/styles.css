@@ -495,6 +495,10 @@ body.dark .input-icon { background: rgba(255,255,255,.04); }
 .report-card { display: grid; gap: 1rem; padding: 1.1rem; transition: .2s ease; }
 .progress { height: 9px; border-radius: 999px; background: rgba(103, 117, 138, .15); overflow: hidden; }
 .progress span { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--green), var(--cyan)); }
+.progress .progress-24 { width: 24%; }
+.progress .progress-52 { width: 52%; }
+.progress .progress-78 { width: 78%; }
+.progress .progress-100 { width: 100%; }
 .card-actions { display: flex; gap: .6rem; }
 .settings-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
 .settings-grid .panel { display: grid; gap: .8rem; }

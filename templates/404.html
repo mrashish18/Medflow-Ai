@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Page Not Found - MediCore{% endblock %}
+{% block content %}
+<div class="page-head">
+    <div>
+        <span class="eyebrow">Not found</span>
+        <h1>404 Page Not Found</h1>
+    </div>
+    <a class="btn-secondary" href="{{ url_for('dashboard') }}"><i class="bi bi-arrow-left"></i> Return to MediCore Dashboard</a>
+</div>
+<section class="panel">
+    <h2>This page is not available</h2>
+    <p>The page may have moved, or your current role may not include this workflow.</p>
+</section>
+{% endblock %}

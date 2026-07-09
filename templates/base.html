@@ -3,7 +3,13 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{% block title %}MedFlow AI{% endblock %}</title>
+    <title>{% block title %}MediCore{% endblock %}</title>
+    <meta name="application-name" content="MediCore">
+    <meta name="apple-mobile-web-app-title" content="MediCore">
+    <meta name="description" content="MediCore is an AI-Powered Hospital Management System for patient care, appointments, laboratory workflows, analytics, and healthcare operations.">
+    <meta property="og:title" content="MediCore">
+    <meta property="og:description" content="AI-Powered Hospital Management System">
+    <meta property="og:site_name" content="MediCore">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
@@ -13,21 +19,20 @@
     <aside class="sidebar" id="sidebar">
         <a class="brand" href="{{ url_for('dashboard') }}">
             <span class="brand-mark"><i class="bi bi-activity"></i></span>
-            <span>MedFlow AI</span>
+            <span>MediCore</span>
         </a>
         <nav class="nav-list">
-            <a href="{{ url_for('dashboard') }}"><i class="bi bi-grid-1x2"></i> Dashboard</a>
-            <a href="{{ url_for('patients') }}"><i class="bi bi-people"></i> Patients</a>
-            <a href="{{ url_for('appointments') }}"><i class="bi bi-calendar2-week"></i> Appointments</a>
-            <a href="{{ url_for('lab_reports') }}"><i class="bi bi-file-earmark-medical"></i> Lab Reports</a>
-            <a href="{{ url_for('analytics') }}"><i class="bi bi-graph-up-arrow"></i> Analytics</a>
-            <a href="{{ url_for('settings') }}"><i class="bi bi-sliders2"></i> Settings</a>
+            {% for label, icon, endpoint in nav_items %}
+            <a href="{{ url_for(endpoint) }}"><i class="bi {{ icon }}"></i> {{ label }}</a>
+            {% endfor %}
         </nav>
+        {% if current_user and current_user.role in ['super_admin', 'doctor'] %}
         <a class="ai-card ai-card-link" href="{{ url_for('ai_tools') }}">
             <i class="bi bi-stars"></i>
             <strong>AI Ready</strong>
-            <p>Symptom assistant, report summary, voice entry and OCR modules.</p>
+            <p>AI-powered hospital management tools for clinical workflow support.</p>
         </a>
+        {% endif %}
     </aside>
 
     <main class="main">
@@ -41,7 +46,7 @@
             <button class="icon-btn" id="themeToggle" aria-label="Toggle dark mode"><i class="bi bi-moon-stars"></i></button>
             <div class="profile">
                 <span>{{ current_user.name if current_user else 'Guest' }}</span>
-                <small>{{ current_user.role if current_user else 'Visitor' }}</small>
+                <small>{{ role_label(current_user.role) if current_user else 'Visitor' }}</small>
             </div>
         </header>
         <section class="page-content fade-in">

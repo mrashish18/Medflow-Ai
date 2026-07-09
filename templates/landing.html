@@ -3,21 +3,27 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>MedFlow AI</title>
+    <title>MediCore</title>
+    <meta name="application-name" content="MediCore">
+    <meta name="apple-mobile-web-app-title" content="MediCore">
+    <meta name="description" content="MediCore is an AI-Powered Hospital Management System for patient care, appointments, laboratory workflows, analytics, and healthcare operations.">
+    <meta property="og:title" content="MediCore">
+    <meta property="og:description" content="AI-Powered Hospital Management System">
+    <meta property="og:site_name" content="MediCore">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 <body class="landing-body">
     <nav class="landing-nav">
-        <a class="brand" href="{{ url_for('landing') }}"><span class="brand-mark"><i class="bi bi-activity"></i></span> MedFlow AI</a>
+        <a class="brand" href="{{ url_for('landing') }}"><span class="brand-mark"><i class="bi bi-activity"></i></span> MediCore</a>
         <a class="btn-secondary" href="{{ url_for('login') }}">Login</a>
     </nav>
     <section class="hero premium-hero">
         <div class="hero-copy">
-            <span class="eyebrow">Smart Patient & Lab Management</span>
-            <h1>MedFlow AI</h1>
-            <p>Premium healthcare operations software for hospitals, pathology labs, clinics, and care teams that need faster registration, cleaner reports, sharper analytics, and AI-ready clinical workflows.</p>
+            <span class="eyebrow">AI-Powered Hospital Management System</span>
+            <h1>MediCore</h1>
+            <p>A modern hospital management platform that streamlines patient care, appointments, laboratory workflows, doctor collaboration, analytics, and healthcare operations through an intuitive web experience.</p>
             <div class="hero-actions">
                 <a class="btn-primary" href="{{ url_for('login') }}">Open Dashboard</a>
                 <a class="btn-secondary" href="#features">View Features</a>
@@ -46,7 +52,7 @@
                     <div class="preview-top">
                         <div>
                             <strong>Care Command Center</strong>
-                            <span>Today · Live hospital workflow</span>
+                            <span>Today - Live hospital workflow</span>
                         </div>
                         <small><i class="bi bi-bell"></i></small>
                     </div>
@@ -62,9 +68,9 @@
                         <span style="height: 44%"></span><span style="height: 62%"></span><span style="height: 51%"></span><span style="height: 78%"></span><span style="height: 67%"></span><span style="height: 88%"></span>
                     </div>
                     <div class="preview-list">
-                        <div><span></span><b>Aarav Mehta · CBC review</b><small>Processing</small></div>
-                        <div><span></span><b>Priya Nair · ENT follow-up</b><small>Confirmed</small></div>
-                        <div><span></span><b>Meera Iyer · Thyroid report</b><small>Delivered</small></div>
+                        <div><span></span><b>Aarav Mehta - CBC review</b><small>Processing</small></div>
+                        <div><span></span><b>Priya Nair - ENT follow-up</b><small>Confirmed</small></div>
+                        <div><span></span><b>Meera Iyer - Thyroid report</b><small>Delivered</small></div>
                     </div>
                 </div>
             </div>
@@ -89,9 +95,9 @@
         </div>
     </section>
     <section class="testimonial-band">
-        <blockquote>“A clinic-grade SaaS interface with the polish expected from a modern AI healthcare startup.”</blockquote>
+        <blockquote>A clinic-grade SaaS interface with the polish expected from a modern AI healthcare startup.</blockquote>
         <span>Designed for recruiters, healthcare demos, and internship portfolios.</span>
     </section>
-    <footer class="landing-footer">MedFlow AI © {{ now.year }} · Secure healthcare workflow platform</footer>
+    <footer class="landing-footer">&copy; {{ now.year }} MediCore - Built by Ashish using AI-assisted Vibe Coding.</footer>
 </body>
 </html>

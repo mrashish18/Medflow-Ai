@@ -1,17 +1,19 @@
-# MedFlow AI
+# MediCore
 
-MedFlow AI is a modern healthcare SaaS web application for hospitals, clinics, pathology labs, and healthcare centers. It helps staff register patients, manage appointments, track lab reports, view analytics, and explore future-ready AI workflow modules.
+AI-Powered Hospital Management System
+
+MediCore is a modern healthcare SaaS web application for hospitals, clinics, pathology labs, and healthcare centers. It helps staff register patients, manage appointments, track lab reports, view analytics, and explore future-ready AI workflow modules.
 
 The project is designed as a professional portfolio app for internship interviews, recruiter review, LinkedIn demos, and healthcare software presentations.
 
 ## Live Demo
 
-[Open MedFlow AI on Render](https://medflow-ai-96cv.onrender.com)
+[Open MediCore on Render](https://medflow-ai-96cv.onrender.com)
 
 ## Demo Login
 
-- Email: `admin@medflow.ai`
-- Password: `medflow123`
+- Email: `admin@medicore.ai`
+- Password: `medicore123`
 
 ## Features
 
@@ -61,7 +63,7 @@ Backend:
 ## Project Structure
 
 ```text
-MEDFLOW BY ASHISH/
+MEDICORE BY ASHISH/
 |-- app.py
 |-- requirements.txt
 |-- Procfile
@@ -181,7 +183,7 @@ Render settings:
 - PDF lab report generation
 - Email report delivery
 - QR code patient ID
-- Role-based dashboards for Admin, Doctor, Lab Technician, and Receptionist
+- Role-based dashboards for Admin, Doctor, Lab Technician, Receptionist, and Patient
 - Real OpenAI-powered symptom assistant and report summary
 - Calendar drag-and-drop scheduling
 - REST API endpoints for mobile apps
@@ -192,7 +194,9 @@ Built by Ashish as a vibe-coded full-stack portfolio project exploring modern UI
 
 ## License
 
-© 2026 Ashish Kumar — MedFlow AI
+© 2026 MediCore
+
+Built by Ashish using AI-assisted Vibe Coding.
 
 This project is provided for educational and portfolio purposes only.
 

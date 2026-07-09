@@ -1,17 +1,17 @@
 const $ = (selector) => document.querySelector(selector);
 const $$ = (selector) => document.querySelectorAll(selector);
 
-const savedTheme = localStorage.getItem("medflow-theme");
+const savedTheme = localStorage.getItem("medicore-theme");
 if (savedTheme === "dark") document.body.classList.add("dark");
 
 $("#themeToggle")?.addEventListener("click", () => {
     document.body.classList.toggle("dark");
-    localStorage.setItem("medflow-theme", document.body.classList.contains("dark") ? "dark" : "light");
+    localStorage.setItem("medicore-theme", document.body.classList.contains("dark") ? "dark" : "light");
 });
 
 $("#settingsTheme")?.addEventListener("change", (event) => {
     document.body.classList.toggle("dark", event.target.checked);
-    localStorage.setItem("medflow-theme", event.target.checked ? "dark" : "light");
+    localStorage.setItem("medicore-theme", event.target.checked ? "dark" : "light");
 });
 
 $("#sidebarToggle")?.addEventListener("click", () => $("#sidebar")?.classList.toggle("open"));

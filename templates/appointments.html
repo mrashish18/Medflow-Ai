@@ -1,7 +1,7 @@
 {% extends "base.html" %}
-{% block title %}Appointments · MedFlow AI{% endblock %}
+{% block title %}Appointments - MediCore{% endblock %}
 {% block content %}
-<div class="page-head"><div><span class="eyebrow">Calendar</span><h1>Appointment System</h1></div><button class="btn-primary" data-modal="appointmentModal"><i class="bi bi-calendar-plus"></i> Book</button></div>
+<div class="page-head"><div><span class="eyebrow">Calendar</span><h1>Appointment System</h1></div>{% if current_user.role in ['super_admin', 'receptionist'] %}<button class="btn-primary" data-modal="appointmentModal"><i class="bi bi-calendar-plus"></i> Book</button>{% endif %}</div>
 <section class="appointment-hero panel">
     <div>
         <span class="eyebrow">Today overview</span>
@@ -38,7 +38,7 @@
         <div class="empty-slot">
             <i class="bi bi-calendar2-plus"></i>
             <span>Open slot</span>
-            <button type="button" data-modal="appointmentModal">Book now</button>
+            {% if current_user.role in ['super_admin', 'receptionist'] %}<button type="button" data-modal="appointmentModal">Book now</button>{% endif %}
         </div>
         {% endfor %}
     </div>
@@ -48,8 +48,8 @@
 <section class="doctor-strip">
     {% for doctor in doctors %}
     <article>
-        <span>{{ doctor.split(' ')[1][:1] if doctor.split(' ')|length > 1 else 'D' }}</span>
-        <div><strong>{{ doctor }}</strong><small>Available today</small></div>
+        <span>{{ doctor.name.split(' ')[1][:1] if doctor.name.split(' ')|length > 1 else 'D' }}</span>
+        <div><strong>{{ doctor.name }}</strong><small>Available today</small></div>
         <i class="bi bi-check-circle"></i>
     </article>
     {% endfor %}
@@ -89,9 +89,9 @@
                 <span>Doctor to visit</span>
                 <div class="input-icon">
                     <i class="bi bi-person-vcard"></i>
-                    <select name="doctor" required>
+                    <select name="doctor_id" required>
                         {% for doctor in doctors %}
-                        <option value="{{ doctor }}">{{ doctor }}</option>
+                        <option value="{{ doctor.id }}">{{ doctor.name }}</option>
                         {% endfor %}
                     </select>
                 </div>
