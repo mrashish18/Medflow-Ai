@@ -221,65 +221,66 @@ http://127.0.0.1:5000
 
 # 📸 Screenshots
 
+---
+
 ## 🏠 Homepage
 
 ### Landing Page
 
-<p align="center">
-  <img src="static/screenshots/01_HOMEPAGE_START_01.png" width="900" alt="Homepage Start">
-</p>
+![Homepage Start](./static/screenshoot/01_HOMEPAGE_START_01.png)
 
-![Homepage Middle](static/screenshots/02_HOMEPAGE_MIDDLE_02.png)
+![Homepage Middle](./static/screenshoot/02_HOMEPAGE_MIDDLE_02.png)
 
-![Homepage End](static/screenshots/03_HOMEPAGE_END_03.png)
+![Homepage End](./static/screenshoot/03_HOMEPAGE_END_03.png)
 
 ---
 
 ## 🔐 Authentication
 
-![Sign In](static/screenshots/04_SIGN%20IN%20OR%20SIGN%20UP%20PAGE.png)
+![Sign In](./static/screenshoot/04_SIGN_IN_OR_SIGN_UP_PAGE.png)
 
 ---
 
 ## 📊 Dashboard
 
-![Dashboard](static/screenshots/05_HOSPITAL%20DASHBOARD.png)
+![Dashboard](./static/screenshoot/05_HOSPITAL_DASHBOARD.png)
 
 ---
 
 ## 👨‍⚕️ Patient Management
 
-![Patient Management](static/screenshots/06_PATIENT%20MANAGEMENT.png)
+![Patient Management](./static/screenshoot/06_PATIENT_MANAGEMENT.png)
 
-![Add Patient](static/screenshots/07_ADD%20PATIENT.png)
+![Add Patient](./static/screenshoot/07_ADD_PATIENT.png)
 
 ---
 
 ## 📅 Appointment System
 
-![Appointment System](static/screenshots/08_APPOINTMENT%20SYSTEM.png)
+![Appointment System](./static/screenshoot/08_APPOINTMENT_SYSTEM.png)
 
-![Book Appointment](static/screenshots/09_BOOK%20APPOINTMENT.png)
+![Book Appointment](./static/screenshoot/09_BOOK_APPOINTMENT.png)
 
 ---
 
 ## 🧪 Laboratory Reports
 
-![Lab Reports](static/screenshots/10_LAB%20REPORT%20MANAGEMENT.png)
+![Lab Reports](./static/screenshoot/10_LAB_REPORT_MANAGEMENT.png)
 
-![Add Lab Test](static/screenshots/11_ADD%20LAB%20TEST.png)
+![Add Lab Test](./static/screenshoot/11_ADD_LAB_TEST.png)
 
 ---
 
 ## 📈 Analytics
 
-![Analytics](static/screenshots/12_ANALYTICS.png)
+![Analytics](./static/screenshoot/12_ANALYTICS.png)
 
 ---
 
 ## 🤖 AI Module
 
-![AI Module](static/screenshots/13_AI%20MODULE.png)
+![AI Module](./static/screenshoot/13_AI_MODULE.png)
+
 
 ---
 
