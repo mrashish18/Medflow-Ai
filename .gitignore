@@ -1,5 +1,39 @@
-.env
+# Python
 __pycache__/
-*.pyc
-medicore.db
-instance/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual Environment
+venv/
+.env
+.env.*
+
+# VS Code
+.vscode/
+
+# Visual Studio
+.vs/
+
+# Database
+*.db
+*.sqlite3
+
+# Logs
+*.log
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# Python cache
+.pytest_cache/
+.mypy_cache/
+
+# Build
+build/
+dist/
+*.egg-info/
+
+# Secrets
+.env
