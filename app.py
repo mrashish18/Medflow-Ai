@@ -496,6 +496,11 @@ def login():
     return render_template("login.html", error=error)
 
 
+@app.route("/signup")
+def signup():
+    return redirect(url_for("login"))
+
+
 @app.route("/logout")
 def logout():
     session.clear()
