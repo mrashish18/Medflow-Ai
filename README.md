@@ -225,7 +225,9 @@ http://127.0.0.1:5000
 
 ### Landing Page
 
-![Homepage Start](static/screenshots/01_HOMEPAGE_START_01.png)
+<p align="center">
+  <img src="static/screenshots/01_HOMEPAGE_START_01.png" width="900" alt="Homepage Start">
+</p>
 
 ![Homepage Middle](static/screenshots/02_HOMEPAGE_MIDDLE_02.png)
 
